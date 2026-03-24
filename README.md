@@ -61,9 +61,6 @@ python -m uvicorn server:app --reload
 🌐 **Accessing the Server:**
 Once the server is completely up and running, it will be available at:
 - **Base Endpoint:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-- **Swagger UI (Interactive Docs):** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- **ReDoc (Alternative Docs):** [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
-
 ---
 
 ## 📊 Usage Guide
