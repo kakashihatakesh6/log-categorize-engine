@@ -23,7 +23,7 @@ This project implements a hybrid framework combining three complementary approac
 ## 🏗️ Architecture Flow
 
 <div align="center">
-  <img src="resources/arch.png" alt="Architecture Diagram" width="85%">
+  <img src="resources/architecture.png" alt="Architecture Diagram" width="85%">
 </div>
 
 ---
@@ -73,11 +73,29 @@ Ready to classify your logs? Interacting with the API is straightforward:
 1. Upload a **CSV file** containing your raw logs to the FastAPI classification endpoint.
 2. Ensure the CSV contains the following mandatory columns:
    - `source` : Specifies the origin of the log.
-   - `log_message` : The raw log text string to be classified.
+- `log_message` : The raw log text string to be classified.
 
-**Output Generation:**
-The system will run the logs through its hybrid framework and yield a downloaded CSV file appended with an additional column:
-- `target_label` : The mathematically identified and classified category for each given log entry.
+#### 2. Making a Request
+You can seamlessly query the classification endpoint using the following methods:
+
+**Method A: Using Swagger UI (Easiest)**
+1. Navigate to **[http://127.0.0.1:8000/classify/](http://127.0.0.1:8000/classify/)** in your browser.
+2. Locate and expand the `POST /classify/` tab.
+3. Click "Try it out", upload your CSV file under the `file` field, and click "Execute".
+
+**Method B: Using cURL from the Terminal**
+```bash
+curl -X 'POST' \
+  'http://127.0.0.1:8000/classify/' \
+  -H 'accept: text/csv' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'file=@your_input_logs.csv' \
+  -o classified_output.csv
+```
+
+#### 3. Output Generation
+Once your file is uploaded and processed through the hybrid framework, the API will instantly return a **downloadable CSV file**. This output file perfectly matches your input, but includes a new dynamically appended column:
+- `target_label` : The mathematically and contextually identified category for each log entry.
 
 ---
 
